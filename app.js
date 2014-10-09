@@ -1,5 +1,6 @@
 const KEY = 'ntalk.sid';
 const SECRET = 'ntalk';
+
 var express = require('express');
 var load = require('express-load');
 var bodyParser = require('body-parser');
@@ -12,6 +13,8 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var cookie = cookieParser(SECRET);
 var store = new expressSession.MemoryStore();
+var mongoose = require('mongoose');
+global.db = mongoose.connect('mongodb://localhost/ntalk');
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
